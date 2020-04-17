@@ -12,7 +12,6 @@ namespace pomdyBackend.DAO
         public static readonly string FIELD_ID = "id";
         public static readonly string FIELD_ISARCHIVED = "isArchived";
         public static readonly string FIELD_IDSTUDENT = "idStudent";
-        public static readonly string FIELD_IDPROJECT = "idProject";
         public static readonly string FIELD_NAME = "name";
         public static readonly string FIELD_DESCRIPTION = "description";
         public static readonly string FIELD_STARTDATE = "startDate";
@@ -24,26 +23,8 @@ namespace pomdyBackend.DAO
         // GET ALL
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
-        // POST WITH PROJECT
-        private static readonly string REQ_POST_WITH_PROJECT
-            = string.Format(
-                "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}) OUTPUT Inserted.{11} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7}, @{8}, @{9}, @{10})",
-                TABLE_NAME, 
-                FIELD_ISARCHIVED,
-                FIELD_IDSTUDENT,
-                FIELD_IDPROJECT,
-                FIELD_NAME,
-                FIELD_DESCRIPTION,
-                FIELD_STARTDATE,
-                FIELD_ENDDATE,
-                FIELD_WORKTIME,
-                FIELD_BREAKTIME,
-                FIELD_SCORE,
-                FIELD_ID
-            );
-        
-        // POST WITHOUT PROJECT
-        private static readonly string REQ_POST_WITHOUT_PROJECT
+        // POST
+        private static readonly string REQ_POST
             = string.Format(
                 "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}) OUTPUT Inserted.{10} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7}, @{8}, @{9})",
                 TABLE_NAME, 
@@ -58,7 +39,7 @@ namespace pomdyBackend.DAO
                 FIELD_SCORE,
                 FIELD_ID
             );
-        
+
         public static IEnumerable<Session> GetAll()
         {
             List<Session> sessions = new List<Session>();
@@ -87,16 +68,7 @@ namespace pomdyBackend.DAO
 
                 SqlCommand command = connection.CreateCommand();
 
-                // Optional rules
-                if (session.IdProject == 0)
-                {
-                    command.CommandText = REQ_POST_WITHOUT_PROJECT;
-                }
-                else
-                {
-                    command.CommandText = REQ_POST_WITH_PROJECT;
-                    command.Parameters.AddWithValue($"@{FIELD_IDPROJECT}", session.IdProject);
-                }
+                command.CommandText = REQ_POST;
                 
                 command.Parameters.AddWithValue($"@{FIELD_ISARCHIVED}", session.IsArchived);
                 command.Parameters.AddWithValue($"@{FIELD_IDSTUDENT}", session.IdStudent);

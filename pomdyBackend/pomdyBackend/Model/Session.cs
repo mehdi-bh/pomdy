@@ -11,7 +11,6 @@ namespace pomdyBackend.Model
         public int Id { get; set; }
         public bool IsArchived { get; set; }
         public int IdStudent { get; set; }
-        public int IdProject { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
@@ -27,7 +26,6 @@ namespace pomdyBackend.Model
             Id = id;
             IsArchived = isArchived;
             IdStudent = idStudent;
-            IdProject = idProject;
             Name = name;
             Description = description;
             StartDate = startDate;
@@ -43,7 +41,6 @@ namespace pomdyBackend.Model
             Id = Convert.ToInt32(sqlDataReader[SessionDAO.FIELD_ID].ToString());
             IsArchived = Convert.ToBoolean(sqlDataReader[SessionDAO.FIELD_ISARCHIVED].ToString());
             IdStudent = Convert.ToInt32(sqlDataReader[SessionDAO.FIELD_IDSTUDENT].ToString());
-            IdProject = Convert.ToInt32(sqlDataReader[SessionDAO.FIELD_IDPROJECT].ToString());
             Name = sqlDataReader[SessionDAO.FIELD_NAME].ToString();
             Description = sqlDataReader[SessionDAO.FIELD_DESCRIPTION].ToString();
             StartDate = Convert.ToDateTime(sqlDataReader[SessionDAO.FIELD_STARTDATE].ToString());

@@ -27,7 +27,7 @@ namespace pomdyBackend.DAO
         // GET ALL | /students
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
-        // POST | without optional
+        // POST | without optional | account creating
         private static readonly string REQ_POST
             = string.Format(
                 "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}) OUTPUT Inserted.{8} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7})",
@@ -41,6 +41,8 @@ namespace pomdyBackend.DAO
                 FIELD_BIRTHDATE,
                 FIELD_ID
             );
+        
+        // TODO : PUT with all the details | account modify
         
         public static IEnumerable<Student> GetAll()
         {
@@ -87,7 +89,5 @@ namespace pomdyBackend.DAO
                 return student;
             }
         }
-            
-        
     }
 }

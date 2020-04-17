@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using pomdyBackend.Model;
 
@@ -18,6 +19,20 @@ namespace pomdyBackend.DAO
         
         // GET ALL | /extrabreaks
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
+        
+        // POST
+        private static readonly string REQ_POST
+            = string.Format(
+                "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}) OUTPUT Inserted.{6} VALUES (@{1}, @{2}, @{3}, @{4}, @{5})",
+                TABLE_NAME, 
+                FIELD_REASON,
+                FIELD_DURATION,
+                FIELD_IDSESSION,
+                FIELD_STARTDATE,
+                FIELD_ISARCHIVED,
+                FIELD_ID
+            );
+
         public static IEnumerable<Extrabreak> GetAll()
         {
             List<Extrabreak> extrabreaks = new List<Extrabreak>();
@@ -36,6 +51,31 @@ namespace pomdyBackend.DAO
                 }
             }
             return extrabreaks;
+        }
+        
+        public static Extrabreak Post(Extrabreak extrabreak)
+        {
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                
+                command.CommandText = REQ_POST;
+                
+                // Optional rules
+                bool reasonIsBlank = string.IsNullOrEmpty(extrabreak.Reason);
+                command.Parameters.AddWithValue($"@{FIELD_REASON}", reasonIsBlank ? "" : extrabreak.Reason);
+
+                command.Parameters.AddWithValue($"@{FIELD_DURATION}", extrabreak.Duration);
+                command.Parameters.AddWithValue($"@{FIELD_IDSESSION}", extrabreak.IdSession);
+                command.Parameters.AddWithValue($"@{FIELD_STARTDATE}", extrabreak.StartDate);
+                command.Parameters.AddWithValue($"@{FIELD_ISARCHIVED}", extrabreak.IsArchived);
+
+                extrabreak.Id = (int) command.ExecuteScalar();
+
+                return extrabreak;
+            }
         }
     }
 }

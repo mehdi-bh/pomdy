@@ -58,17 +58,5 @@ namespace pomdyBackend.Model
             School = sqlDataReader[StudentDAO.FIELD_SCHOOL].ToString();
             Photo = sqlDataReader[StudentDAO.FIELD_PHOTO].ToString();
         }
-
-        public void SetEmptyFieldsNull()
-        {
-            this.Token = this.Token != "" ? this.Token : null;
-            this.FirstName = this.FirstName != "" ? this.FirstName : null;
-            this.LastName = this.LastName != "" ? this.LastName : null;
-            this.Description = this.Description != "" ? this.Description : null;
-            //this.BirthDate = this.BirthDate ? this.BirthDate : "";
-            this.DiplomaName = this.DiplomaName != "" ? this.DiplomaName : null;
-            this.School = this.School != "" ? this.School : null;
-            this.Photo = this.Photo != "" ? this.Photo : null;
-        }
     }
 }

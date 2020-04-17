@@ -14,5 +14,11 @@ namespace pomdyBackend.Controllers
         {
             return Ok(TeamDAO.GetAll());
         }
+        [HttpPost]
+        public ActionResult<Team> Post([FromBody] Team team)
+        {
+            // TODO : check doublon (nom)
+            return Ok(TeamDAO.Post(team));
+        }
     }
 }
