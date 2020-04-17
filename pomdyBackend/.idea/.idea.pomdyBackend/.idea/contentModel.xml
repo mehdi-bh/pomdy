@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\mehdi\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mehdi\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_pomdyBackend.-1096656802.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="pomdyBackend" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="ExtrabreakController.cs" t="Include" />
+          <e p="ProjectController.cs" t="Include" />
+          <e p="RoomController.cs" t="Include" />
+          <e p="SessionController.cs" t="Include" />
+          <e p="StudentController.cs" t="Include" />
+          <e p="TeamController.cs" t="Include" />
+        </e>
+        <e p="DAO" t="Include">
+          <e p="ExtrabreakDAO.cs" t="Include" />
+          <e p="ProjectDAO.cs" t="Include" />
+          <e p="RoomDAO.cs" t="Include" />
+          <e p="SessionDAO.cs" t="Include" />
+          <e p="StudentDAO.cs" t="Include" />
+          <e p="TeamDAO.cs" t="Include" />
+        </e>
+        <e p="DataBase.cs" t="Include" />
+        <e p="Model" t="Include">
+          <e p="Extrabreak.cs" t="Include" />
+          <e p="Project.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
+          <e p="Session.cs" t="Include" />
+          <e p="Student.cs" t="Include" />
+          <e p="Team.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="pomdyBackend.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="pomdyBackend.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="pomdyBackend.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
