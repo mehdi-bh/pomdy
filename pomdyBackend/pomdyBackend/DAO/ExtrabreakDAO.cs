@@ -32,6 +32,14 @@ namespace pomdyBackend.DAO
                 FIELD_ISARCHIVED,
                 FIELD_ID
             );
+        
+        // PUT
+        private static readonly string REQ_PUT = $"UPDATE {TABLE_NAME} SET {FIELD_ISARCHIVED} = @{FIELD_ISARCHIVED}," +
+                                                 $" {FIELD_IDSESSION} = @{FIELD_IDSESSION}," +
+                                                 $" {FIELD_REASON} = @{FIELD_REASON}," +
+                                                 $" {FIELD_DURATION} = @{FIELD_DURATION}," +
+                                                 $" {FIELD_STARTDATE} = @{FIELD_STARTDATE} " +
+                                                 $" WHERE {FIELD_ID} = @{FIELD_ID}";
 
         public static IEnumerable<Extrabreak> GetAll()
         {
@@ -76,6 +84,29 @@ namespace pomdyBackend.DAO
 
                 return extrabreak;
             }
+        }
+        
+        public static bool Put(Extrabreak extrabreak)
+        {
+            bool hasBeenChanged = false;
+
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_PUT;
+                
+                command.Parameters.AddWithValue($"@{FIELD_ISARCHIVED}", extrabreak.IsArchived);
+                command.Parameters.AddWithValue($"@{FIELD_IDSESSION}", extrabreak.IdSession);
+                command.Parameters.AddWithValue($"@{FIELD_REASON}", extrabreak.Reason);
+                command.Parameters.AddWithValue($"@{FIELD_DURATION}", extrabreak.Duration);
+                command.Parameters.AddWithValue($"@{FIELD_STARTDATE}", extrabreak.StartDate);
+
+                command.Parameters.AddWithValue($"@{FIELD_ID}", extrabreak.Id);
+
+                hasBeenChanged = command.ExecuteNonQuery() == 1;
+            }
+            return hasBeenChanged;
         }
     }
 }

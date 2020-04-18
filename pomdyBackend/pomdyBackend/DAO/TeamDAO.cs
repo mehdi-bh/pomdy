@@ -25,6 +25,11 @@ namespace pomdyBackend.DAO
                 FIELD_NAME,
                 FIELD_ID
             );
+        
+        // PUT
+        private static readonly string REQ_PUT = $"UPDATE {TABLE_NAME} SET {FIELD_ISARCHIVED} = @{FIELD_ISARCHIVED}," +
+                                                 $" {FIELD_NAME} = @{FIELD_NAME} " +
+                                                 $" WHERE {FIELD_ID} = @{FIELD_ID}";
         public static IEnumerable<Team> GetAll()
         {
             List<Team> teams = new List<Team>();
@@ -62,6 +67,26 @@ namespace pomdyBackend.DAO
 
                 return team;
             }
+        }
+        
+        public static bool Put(Team team)
+        {
+            bool hasBeenChanged = false;
+
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_PUT;
+                
+                command.Parameters.AddWithValue($"@{FIELD_ISARCHIVED}", team.IsArchived);
+                command.Parameters.AddWithValue($"@{FIELD_NAME}", team.Name);
+
+                command.Parameters.AddWithValue($"@{FIELD_ID}", team.Id);
+
+                hasBeenChanged = command.ExecuteNonQuery() == 1;
+            }
+            return hasBeenChanged;
         }
     }
 }

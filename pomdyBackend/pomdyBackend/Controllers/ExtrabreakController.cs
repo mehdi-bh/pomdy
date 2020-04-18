@@ -14,10 +14,22 @@ namespace pomdyBackend.Controllers
         {
             return Ok(ExtrabreakDAO.GetAll());
         }
+        
         [HttpPost]
         public ActionResult<Extrabreak> Post([FromBody] Extrabreak extrabreak)
         {
             return Ok(ExtrabreakDAO.Post(extrabreak));
+        }
+        
+        [HttpPut]
+        public ActionResult Put([FromBody] Extrabreak extrabreak)
+        {
+            if (ExtrabreakDAO.Put(extrabreak))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
     }
 }

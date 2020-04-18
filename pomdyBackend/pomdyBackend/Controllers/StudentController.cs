@@ -21,5 +21,16 @@ namespace pomdyBackend.Controllers
             // TODO : check doublon (mail,nickname)
             return Ok(StudentDAO.Post(student));
         }
+        
+        [HttpPut]
+        public ActionResult Put([FromBody] Student student)
+        {
+            if (StudentDAO.Put(student))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }

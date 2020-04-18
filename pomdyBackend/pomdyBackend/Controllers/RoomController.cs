@@ -14,10 +14,22 @@ namespace pomdyBackend.Controllers
         {
             return Ok(RoomDAO.GetAll());
         }
+        
         [HttpPost]
         public ActionResult<Room> Post([FromBody] Room room)
         {
             return Ok(RoomDAO.Post(room));
+        }
+        
+        [HttpPut]
+        public ActionResult Put([FromBody] Room room)
+        {
+            if (RoomDAO.Put(room))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
     }
 }

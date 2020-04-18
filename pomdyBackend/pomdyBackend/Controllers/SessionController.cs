@@ -20,5 +20,16 @@ namespace pomdyBackend.Controllers
         {
             return Ok(SessionDAO.Post(session));
         }
+        
+        [HttpPut]
+        public ActionResult Put([FromBody] Session session)
+        {
+            if (SessionDAO.Put(session))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }
