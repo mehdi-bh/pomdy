@@ -6,7 +6,7 @@ namespace pomdyBackend.DAO
 {
     public class SessionDAO
     {
-        // Const
+        /***** Constants *****/
         private static readonly string TABLE_NAME = "session";
         
         public static readonly string FIELD_ID = "id";
@@ -20,10 +20,11 @@ namespace pomdyBackend.DAO
         public static readonly string FIELD_BREAKTIME = "breakTime";
         public static readonly string FIELD_SCORE = "score";
         
-        // GET ALL
+        /***** Requests *****/
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
-        // POST
+        private static readonly string REQ_GET_BY_ID = REQ_GET_ALL + $" WHERE {FIELD_ID} = @{FIELD_ID}";
+        
         private static readonly string REQ_POST
             = string.Format(
                 "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}) OUTPUT Inserted.{10} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7}, @{8}, @{9})",
@@ -40,7 +41,6 @@ namespace pomdyBackend.DAO
                 FIELD_ID
             );
         
-        // PUT
         private static readonly string REQ_PUT = $"UPDATE {TABLE_NAME} SET {FIELD_ISARCHIVED} = @{FIELD_ISARCHIVED}," +
                                                  $" {FIELD_IDSTUDENT} = @{FIELD_IDSTUDENT}," +
                                                  $" {FIELD_NAME} = @{FIELD_NAME}," +
@@ -51,7 +51,10 @@ namespace pomdyBackend.DAO
                                                  $" {FIELD_BREAKTIME} = @{FIELD_BREAKTIME}," +
                                                  $" {FIELD_SCORE} = @{FIELD_SCORE} " +
                                                  $" WHERE {FIELD_ID} = @{FIELD_ID}";
-
+        
+        private static readonly string REQ_DELETE = $"DELETE FROM {TABLE_NAME} WHERE {FIELD_ID} = @{FIELD_ID}";
+        
+        /***** Methods *****/
         public static IEnumerable<Session> GetAll()
         {
             List<Session> sessions = new List<Session>();
@@ -70,6 +73,23 @@ namespace pomdyBackend.DAO
                 }
             }
             return sessions;
+        }
+        
+        public static Session Get(int id)
+        {
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
+        
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_BY_ID;
+        
+                command.Parameters.AddWithValue($"@{FIELD_ID}", id);
+        
+                SqlDataReader reader = command.ExecuteReader();
+        
+                return reader.Read() ? new Session(reader) : null;
+            }
         }
 
         public static Session Post(Session session)
@@ -123,6 +143,24 @@ namespace pomdyBackend.DAO
                 hasBeenChanged = command.ExecuteNonQuery() == 1;
             }
             return hasBeenChanged;
+        }
+        
+        public static bool Delete(int id)
+        {
+            bool hasBeenDeleted = false;
+
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_DELETE;
+
+                command.Parameters.AddWithValue($@"{FIELD_ID}", id);
+                
+                hasBeenDeleted = command.ExecuteNonQuery() == 1;
+            }
+            
+            return hasBeenDeleted;
         }
     }
 }

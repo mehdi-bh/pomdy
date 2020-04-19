@@ -18,18 +18,24 @@
         </e>
         <e p="DAO" t="Include">
           <e p="ExtrabreakDAO.cs" t="Include" />
+          <e p="FriendStudentDAO.cs" t="Include" />
           <e p="RoomDAO.cs" t="Include" />
+          <e p="RoomStudentDAO.cs" t="Include" />
           <e p="SessionDAO.cs" t="Include" />
           <e p="StudentDAO.cs" t="Include" />
           <e p="TeamDAO.cs" t="Include" />
+          <e p="TeamStudentDAO.cs" t="Include" />
         </e>
         <e p="DataBase.cs" t="Include" />
         <e p="Model" t="Include">
           <e p="Extrabreak.cs" t="Include" />
+          <e p="FriendStudent.cs" t="Include" />
           <e p="Room.cs" t="Include" />
+          <e p="RoomStudent.cs" t="Include" />
           <e p="Session.cs" t="Include" />
           <e p="Student.cs" t="Include" />
           <e p="Team.cs" t="Include" />
+          <e p="TeamStudent.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

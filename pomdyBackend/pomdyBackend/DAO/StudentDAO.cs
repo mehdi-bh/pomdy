@@ -6,7 +6,7 @@ namespace pomdyBackend.DAO
 {
     public class StudentDAO
     {
-        // Const
+        /***** Constants *****/
         private static readonly string TABLE_NAME = "student";
         
         public static readonly string FIELD_ID = "id";
@@ -24,10 +24,11 @@ namespace pomdyBackend.DAO
         public static readonly string FIELD_SCHOOL = "school";
         public static readonly string FIELD_PHOTO = "photo";
         
-        // GET ALL | /students
+        /***** Requests *****/
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
-        // POST | without optional | account creating
+        private static readonly string REQ_GET_BY_ID = REQ_GET_ALL + $" WHERE {FIELD_ID} = @{FIELD_ID}";
+        
         private static readonly string REQ_POST
             = string.Format(
                 "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}) OUTPUT Inserted.{8} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7})",
@@ -42,7 +43,6 @@ namespace pomdyBackend.DAO
                 FIELD_ID
             );
         
-        // PUT | with all fields | modify account
         private static readonly string REQ_PUT = $"UPDATE {TABLE_NAME} SET {FIELD_ISARCHIVED} = @{FIELD_ISARCHIVED}," +
                                                     $" {FIELD_ISGHOSTMODE} = @{FIELD_ISGHOSTMODE}," +
                                                     $" {FIELD_NICKNAME} = @{FIELD_NICKNAME}," +
@@ -58,6 +58,9 @@ namespace pomdyBackend.DAO
                                                     $" {FIELD_PHOTO} = @{FIELD_PHOTO}" +
                                                     $" WHERE {FIELD_ID} = @{FIELD_ID}";
         
+        private static readonly string REQ_DELETE = $"DELETE FROM {TABLE_NAME} WHERE {FIELD_ID} = @{FIELD_ID}";
+        
+        /***** Methods *****/
         public static IEnumerable<Student> GetAll()
         {
             List<Student> students = new List<Student>();
@@ -78,8 +81,23 @@ namespace pomdyBackend.DAO
             return students;
         }
         
+        public static Student Get(int id)
+        {
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
         
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_BY_ID;
         
+                command.Parameters.AddWithValue($"@{FIELD_ID}", id);
+        
+                SqlDataReader reader = command.ExecuteReader();
+        
+                return reader.Read() ? new Student(reader) : null;
+            }
+        }
+
         public static Student Post(Student student)
         {
             using (SqlConnection connection = Database.GetConnection())
@@ -133,6 +151,24 @@ namespace pomdyBackend.DAO
                 hasBeenChanged = command.ExecuteNonQuery() == 1;
             }
             return hasBeenChanged;
+        }
+        
+        public static bool Delete(int id)
+        {
+            bool hasBeenDeleted = false;
+
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_DELETE;
+
+                command.Parameters.AddWithValue($@"{FIELD_ID}", id);
+                
+                hasBeenDeleted = command.ExecuteNonQuery() == 1;
+            }
+            
+            return hasBeenDeleted;
         }
     }
 }

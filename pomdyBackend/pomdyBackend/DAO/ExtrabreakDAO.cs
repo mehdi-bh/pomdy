@@ -7,7 +7,7 @@ namespace pomdyBackend.DAO
 {
     public class ExtrabreakDAO
     {
-        // Const
+        /***** Constants *****/
         private static readonly string TABLE_NAME = "extrabreak";
         
         public static readonly string FIELD_ID = "id";
@@ -17,10 +17,11 @@ namespace pomdyBackend.DAO
         public static readonly string FIELD_DURATION = "duration";
         public static readonly string FIELD_STARTDATE = "startDate";
         
-        // GET ALL | /extrabreaks
+        /***** Requests *****/
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
-        // POST
+        private static readonly string REQ_GET_BY_ID = REQ_GET_ALL + $" WHERE {FIELD_ID} = @{FIELD_ID}";
+        
         private static readonly string REQ_POST
             = string.Format(
                 "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}) OUTPUT Inserted.{6} VALUES (@{1}, @{2}, @{3}, @{4}, @{5})",
@@ -33,7 +34,6 @@ namespace pomdyBackend.DAO
                 FIELD_ID
             );
         
-        // PUT
         private static readonly string REQ_PUT = $"UPDATE {TABLE_NAME} SET {FIELD_ISARCHIVED} = @{FIELD_ISARCHIVED}," +
                                                  $" {FIELD_IDSESSION} = @{FIELD_IDSESSION}," +
                                                  $" {FIELD_REASON} = @{FIELD_REASON}," +
@@ -41,6 +41,9 @@ namespace pomdyBackend.DAO
                                                  $" {FIELD_STARTDATE} = @{FIELD_STARTDATE} " +
                                                  $" WHERE {FIELD_ID} = @{FIELD_ID}";
 
+        private static readonly string REQ_DELETE = $"DELETE FROM {TABLE_NAME} WHERE {FIELD_ID} = @{FIELD_ID}";
+
+        /***** Methods *****/
         public static IEnumerable<Extrabreak> GetAll()
         {
             List<Extrabreak> extrabreaks = new List<Extrabreak>();
@@ -59,6 +62,23 @@ namespace pomdyBackend.DAO
                 }
             }
             return extrabreaks;
+        }
+        
+        public static Extrabreak Get(int id)
+        {
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
+        
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_BY_ID;
+        
+                command.Parameters.AddWithValue($"@{FIELD_ID}", id);
+        
+                SqlDataReader reader = command.ExecuteReader();
+        
+                return reader.Read() ? new Extrabreak(reader) : null;
+            }
         }
         
         public static Extrabreak Post(Extrabreak extrabreak)
@@ -107,6 +127,24 @@ namespace pomdyBackend.DAO
                 hasBeenChanged = command.ExecuteNonQuery() == 1;
             }
             return hasBeenChanged;
+        }
+        
+        public static bool Delete(int id)
+        {
+            bool hasBeenDeleted = false;
+
+            using (SqlConnection connection = Database.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_DELETE;
+
+                command.Parameters.AddWithValue($@"{FIELD_ID}", id);
+                
+                hasBeenDeleted = command.ExecuteNonQuery() == 1;
+            }
+            
+            return hasBeenDeleted;
         }
     }
 }

@@ -9,10 +9,19 @@ namespace pomdyBackend.Controllers
     [Route("/api/[controller]")]
     public class SessionsController : ControllerBase
     {
+        /***** API Sessions *****/
         [HttpGet]
         public ActionResult<IEnumerable<Session>> GetAll()
         {
             return Ok(SessionDAO.GetAll());
+        }
+        
+        [HttpGet("{id}")]
+        public ActionResult<Session> Get(int id)
+        {
+            Session session = SessionDAO.Get(id);
+
+            return session != null ? (ActionResult<Session>) Ok(session) : NotFound("This session doesn't exist!");
         }
         
         [HttpPost]
@@ -29,6 +38,16 @@ namespace pomdyBackend.Controllers
                 return Ok();
             }
 
+            return BadRequest();
+        }
+        
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            if (SessionDAO.Delete(id))
+            {
+                return Ok();
+            }
             return BadRequest();
         }
     }
