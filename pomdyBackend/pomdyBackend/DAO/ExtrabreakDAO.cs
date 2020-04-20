@@ -8,7 +8,7 @@ namespace pomdyBackend.DAO
     public class ExtrabreakDAO
     {
         /***** Constants *****/
-        private static readonly string TABLE_NAME = "extrabreak";
+        public static readonly string TABLE_NAME = "extrabreak";
         
         public static readonly string FIELD_ID = "id";
         public static readonly string FIELD_IDSESSION = "idSession";
@@ -21,6 +21,12 @@ namespace pomdyBackend.DAO
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
         private static readonly string REQ_GET_BY_ID = REQ_GET_ALL + $" WHERE {FIELD_ID} = @{FIELD_ID}";
+        
+        private static readonly string REQ_GET_SESSION_EXTRABREAKS = REQ_GET_ALL + $" WHERE {FIELD_IDSESSION} = @{FIELD_IDSESSION}";
+        
+        private static readonly string REQ_GET_STUDENT_EXTRABREAKS
+            = string.Format("SELECT * FROM {1} INNER JOIN {0} ON {1}.{2} = {0}.{3} where {1}.{4} = @{5}"
+                ,TABLE_NAME, SessionDAO.TABLE_NAME, SessionDAO.FIELD_ID, FIELD_IDSESSION, SessionDAO.FIELD_IDSTUDENT, StudentDAO.FIELD_ID);
         
         private static readonly string REQ_POST
             = string.Format(
@@ -79,6 +85,50 @@ namespace pomdyBackend.DAO
         
                 return reader.Read() ? new Extrabreak(reader) : null;
             }
+        }
+        
+        public static IEnumerable<Extrabreak> GetSessionExtrabreaks(int idSession)
+        {
+            List<Extrabreak> extrabreaks = new List<Extrabreak>();
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_SESSION_EXTRABREAKS;
+                
+                command.Parameters.AddWithValue($"@{FIELD_IDSESSION}", idSession);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    extrabreaks.Add(new Extrabreak(reader));
+                }
+            }
+            return extrabreaks;
+        }
+        
+        public static IEnumerable<Extrabreak> GetStudentExtrabreaks(int idStudent)
+        {
+            List<Extrabreak> extrabreaks = new List<Extrabreak>();
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_STUDENT_EXTRABREAKS;
+                
+                command.Parameters.AddWithValue($"@{StudentDAO.FIELD_ID}", idStudent);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    extrabreaks.Add(new Extrabreak(reader));
+                }
+            }
+            return extrabreaks;
         }
         
         public static Extrabreak Post(Extrabreak extrabreak)

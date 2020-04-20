@@ -52,6 +52,12 @@ namespace pomdyBackend.Controllers
         }
         
         /***** API RoomStudent *****/
+        [HttpGet("{id}/students")]
+        public ActionResult<IEnumerable<Student>> GetRoomStudents(int id)
+        {
+            return Ok(RoomStudentDAO.GetRoomStudents(id));
+        }
+        
         [HttpPost("{idRoom}/students")]
         public ActionResult<RoomStudent> Post(int idRoom,[FromBody] Student student)
         {

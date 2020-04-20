@@ -21,7 +21,6 @@ namespace pomdyBackend.Model
         {
             IdFirstStudent = Convert.ToInt32(sqlDataReader[FriendStudentDAO.FIELD_IDFIRSTSTUDENT].ToString());
             IdSecondStudent = Convert.ToInt32(sqlDataReader[FriendStudentDAO.FIELD_IDSECONDSTUDENT].ToString());
-            
         }
     }
 }

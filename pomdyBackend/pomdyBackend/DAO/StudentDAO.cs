@@ -7,7 +7,7 @@ namespace pomdyBackend.DAO
     public class StudentDAO
     {
         /***** Constants *****/
-        private static readonly string TABLE_NAME = "student";
+        public static readonly string TABLE_NAME = "student";
         
         public static readonly string FIELD_ID = "id";
         public static readonly string FIELD_ISARCHIVED = "isArchived";

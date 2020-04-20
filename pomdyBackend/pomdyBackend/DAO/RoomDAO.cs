@@ -7,7 +7,7 @@ namespace pomdyBackend.DAO
     public class RoomDAO
     {
         /***** Constants *****/
-        private static readonly string TABLE_NAME = "room";
+        public static readonly string TABLE_NAME = "room";
         
         public static readonly string FIELD_ID = "id";
         public static readonly string FIELD_NAME = "name";

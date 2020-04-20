@@ -53,6 +53,12 @@ namespace pomdyBackend.Controllers
         }
         
         /***** API FriendStudent *****/
+        [HttpGet("{id}/friends")]
+        public ActionResult<IEnumerable<Student>> GetFriends(int id)
+        {
+            return Ok(FriendStudentDAO.GetFriends(id));
+        }
+        
         [HttpPost("friends")]
         public ActionResult<Student> Post([FromBody] Student[] student)
         {
@@ -83,6 +89,34 @@ namespace pomdyBackend.Controllers
                 return Ok();
             }
             return BadRequest();
+        }
+        
+        /***** API SessionStudent *****/
+        [HttpGet("{id}/sessions")]
+        public ActionResult<IEnumerable<Session>> GetStudentSessions(int id)
+        {
+            return Ok(SessionDAO.GetStudentSessions(id));
+        }
+        
+        /***** API ExtrabreakStudent *****/
+        [HttpGet("{id}/extrabreaks")]
+        public ActionResult<IEnumerable<Extrabreak>> GetStudentExtrabreaks(int id)
+        {
+            return Ok(ExtrabreakDAO.GetStudentExtrabreaks(id));
+        }
+        
+        /***** API RoomStudent *****/
+        [HttpGet("{id}/rooms")]
+        public ActionResult<IEnumerable<Room>> GetStudentRooms(int id)
+        {
+            return Ok(RoomStudentDAO.GetStudentRooms(id));
+        }
+        
+        /***** API TeamStudent *****/
+        [HttpGet("{id}/teams")]
+        public ActionResult<IEnumerable<Team>> GetStudentTeams(int id)
+        {
+            return Ok(TeamStudentDAO.GetStudentTeams(id));
         }
     }
 }

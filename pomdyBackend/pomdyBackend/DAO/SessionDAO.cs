@@ -7,7 +7,7 @@ namespace pomdyBackend.DAO
     public class SessionDAO
     {
         /***** Constants *****/
-        private static readonly string TABLE_NAME = "session";
+        public static readonly string TABLE_NAME = "session";
         
         public static readonly string FIELD_ID = "id";
         public static readonly string FIELD_ISARCHIVED = "isArchived";
@@ -24,6 +24,8 @@ namespace pomdyBackend.DAO
         private static readonly string REQ_GET_ALL = $"SELECT * FROM {TABLE_NAME}";
         
         private static readonly string REQ_GET_BY_ID = REQ_GET_ALL + $" WHERE {FIELD_ID} = @{FIELD_ID}";
+        
+        private static readonly string REQ_GET_STUDENT_SESSIONS = REQ_GET_ALL + $" WHERE {FIELD_IDSTUDENT} = @{FIELD_IDSTUDENT}";
         
         private static readonly string REQ_POST
             = string.Format(
@@ -90,6 +92,28 @@ namespace pomdyBackend.DAO
         
                 return reader.Read() ? new Session(reader) : null;
             }
+        }
+        
+        public static IEnumerable<Session> GetStudentSessions(int idStudent)
+        {
+            List<Session> sessions = new List<Session>();
+            using (var connection = Database.GetConnection())
+            {
+                connection.Open();
+        
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = REQ_GET_STUDENT_SESSIONS;
+        
+                command.Parameters.AddWithValue($"@{FIELD_IDSTUDENT}", idStudent);
+        
+                SqlDataReader reader = command.ExecuteReader();
+        
+                while (reader.Read())
+                {
+                    sessions.Add(new Session(reader));
+                }
+            }
+            return sessions;
         }
 
         public static Session Post(Session session)

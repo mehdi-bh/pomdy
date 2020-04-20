@@ -50,5 +50,12 @@ namespace pomdyBackend.Controllers
             }
             return BadRequest();
         }
+        
+        /***** API Extrabreaks *****/
+        [HttpGet("{id}/extrabreaks")]
+        public ActionResult<IEnumerable<Extrabreak>> GetSessionExtrabreaks(int id)
+        {
+            return Ok(ExtrabreakDAO.GetSessionExtrabreaks(id));
+        }
     }
 }
