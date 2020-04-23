@@ -15,6 +15,7 @@ namespace pomdyBackend
 {
     public class Startup
     {
+        private static readonly string PATH_ANGULAR_APP = "AngularApp";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,7 @@ namespace pomdyBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSpaStaticFiles(spa=>spa.RootPath = PATH_ANGULAR_APP);
             services.AddControllers();
         }
 
@@ -35,6 +37,10 @@ namespace pomdyBackend
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSpaStaticFiles();
+            
+            app.UseSpa(spa=>spa.Options.SourcePath = PATH_ANGULAR_APP);
 
             app.UseHttpsRedirection();
 

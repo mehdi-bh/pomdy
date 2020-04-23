@@ -33,6 +33,10 @@
         "System.Data.SqlClient": {
           "target": "Package",
           "version": "[4.8.1, )"
+        },
+        "Two.AspNetCore.SpaServices.StaticFiles": {
+          "target": "Package",
+          "version": "[0.9.1, )"
         }
       },
       "imports": [

@@ -7,6 +7,11 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+      <PackageReference Include="Two.AspNetCore.SpaServices.StaticFiles" Version="0.9.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AngularApp" />
     </ItemGroup>
 
 
