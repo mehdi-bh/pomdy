@@ -15,6 +15,8 @@
           <e p="polyfills.js.map" t="Include" />
           <e p="runtime.js" t="Include" />
           <e p="runtime.js.map" t="Include" />
+          <e p="scripts.js" t="Include" />
+          <e p="scripts.js.map" t="Include" />
           <e p="styles.js" t="Include" />
           <e p="styles.js.map" t="Include" />
           <e p="vendor.js" t="Include" />

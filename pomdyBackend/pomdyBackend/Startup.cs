@@ -37,10 +37,6 @@ namespace pomdyBackend
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            app.UseSpaStaticFiles();
-            
-            app.UseSpa(spa=>spa.Options.SourcePath = PATH_ANGULAR_APP);
 
             app.UseHttpsRedirection();
 
@@ -49,6 +45,10 @@ namespace pomdyBackend
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            
+            app.UseSpaStaticFiles();
+            
+            app.UseSpa(spa=>spa.Options.SourcePath = PATH_ANGULAR_APP);
         }
     }
 }

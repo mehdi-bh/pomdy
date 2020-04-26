@@ -31,14 +31,13 @@ namespace pomdyBackend.DAO
         
         private static readonly string REQ_POST
             = string.Format(
-                "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}, {7}) OUTPUT Inserted.{8} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6}, @{7})",
+                "INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}) OUTPUT Inserted.{7} VALUES (@{1}, @{2}, @{3}, @{4}, @{5}, @{6})",
                 TABLE_NAME, 
                 FIELD_ISARCHIVED,
                 FIELD_ISGHOSTMODE,
                 FIELD_NICKNAME,
                 FIELD_PASSWORD,
                 FIELD_MAIL,
-                FIELD_TOKEN,
                 FIELD_BIRTHDATE,
                 FIELD_ID
             );
@@ -113,7 +112,6 @@ namespace pomdyBackend.DAO
                 command.Parameters.AddWithValue($"@{FIELD_NICKNAME}", student.NickName);
                 command.Parameters.AddWithValue($"@{FIELD_PASSWORD}", student.Password);
                 command.Parameters.AddWithValue($"@{FIELD_MAIL}", student.Mail);
-                command.Parameters.AddWithValue($"@{FIELD_TOKEN}", student.Token);
                 command.Parameters.AddWithValue($"@{FIELD_BIRTHDATE}", student.BirthDate);
                 
                 student.Id = (int) command.ExecuteScalar();
