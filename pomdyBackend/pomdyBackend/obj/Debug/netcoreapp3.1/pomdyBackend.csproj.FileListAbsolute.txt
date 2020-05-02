@@ -41,3 +41,7 @@ C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\ne
 C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\Two.AspNetCore.SpaServices.StaticFiles.dll
 C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\obj\Debug\netcoreapp3.1\pomdyBackend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\mehdi\Desktop\Pomdy\pomdyBackend\pomdyBackend\pomdyBackend\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

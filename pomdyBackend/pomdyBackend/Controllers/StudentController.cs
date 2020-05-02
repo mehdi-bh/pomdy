@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using pomdyBackend.DAO;
 using pomdyBackend.Model;
+using pomdyBackend.Utility;
 
 namespace pomdyBackend.Controllers
 {
@@ -10,30 +11,73 @@ namespace pomdyBackend.Controllers
     public class StudentsController : ControllerBase
     {
         /***** API Students *****/
+        [HttpGet("{nickName}&{password}")]
+        public ActionResult<Student> Authenticate(string nickName, string password)
+        {
+            Student student = StudentDAO.Authenticate(nickName, password);
+            return student;
+        }
+        
         [HttpGet]
         public ActionResult<IEnumerable<Student>> GetAll()
         {
             return Ok(StudentDAO.GetAll());
         }
         
-        [HttpGet("{id}")]
-        public ActionResult<Student> Get(int id)
+        [HttpGet("{token}")]
+        public ActionResult<Student> GetStudentFromToken(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             Student student = StudentDAO.Get(id);
 
             return student != null ? (ActionResult<Student>) Ok(student) : NotFound("This student doesn't exist!");
         }
         
+        [HttpGet("nickname/{nickName}")]
+        public ActionResult<Student> GetStudentByNickName(string nickName)
+        {
+            Student student = StudentDAO.GetByNickName(nickName);
+            return student;
+        }
+        
+        [HttpGet("mail/{mail}")]
+        public ActionResult<Student> GetStudentByMail(string mail)
+        {
+            Student student = StudentDAO.GetByMail(mail);
+            return student;
+        }
+        
+        /*[HttpGet("{id}")]
+        public ActionResult<Student> Get(int id)
+        {
+            Student student = StudentDAO.Get(id);
+
+            return student != null ? (ActionResult<Student>) Ok(student) : NotFound("This student doesn't exist!");
+        }*/
+        
         [HttpPost]
         public ActionResult<Student> Post([FromBody] Student student)
         {
-            // TODO : check doublon (mail,nickname)
-            return Ok(StudentDAO.Post(student));
+            if (StudentDAO.GetByMail(student.Mail) == null && StudentDAO.GetByNickName(student.NickName) == null)
+            {
+                return Ok(StudentDAO.Post(student));
+            }
+            return NotFound("This student already exists");
         }
         
         [HttpPut]
         public ActionResult Put([FromBody] Student student)
         {
+            Student checkNickNameStudent = StudentDAO.GetByNickName(student.NickName);
+            Student checkMailStudent = StudentDAO.GetByMail(student.Mail);
+
+            if (checkNickNameStudent != null && checkNickNameStudent.Id != student.Id 
+                ||
+                checkMailStudent != null && checkMailStudent.Id != student.Id)
+            {
+                return NotFound("This student already exists !");
+            }
+
             if (StudentDAO.Put(student))
             {
                 return Ok();
@@ -42,9 +86,10 @@ namespace pomdyBackend.Controllers
             return BadRequest();
         }
         
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        [HttpDelete("{token}")]
+        public ActionResult Delete(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             if (StudentDAO.Delete(id))
             {
                 return Ok();
@@ -53,20 +98,27 @@ namespace pomdyBackend.Controllers
         }
         
         /***** API FriendStudent *****/
-        [HttpGet("{id}/friends")]
-        public ActionResult<IEnumerable<Student>> GetFriends(int id)
+        [HttpGet("{token}/friends")]
+        public ActionResult<IEnumerable<Student>> GetFriends(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             return Ok(FriendStudentDAO.GetFriends(id));
         }
         
         [HttpPost("friends")]
-        public ActionResult<Student> Post([FromBody] Student[] student)
+        public ActionResult<Student> Post([FromBody] Student[] students)
         {
+            int[] ids =
+            {
+                Security.RetrieveIdFromToken(students[0].Token),
+                Security.RetrieveIdFromToken(students[1].Token)
+            };
+            
             FriendStudent[] friendStudents =
-                {
-                    new FriendStudent(student[0].Id, student[1].Id), 
-                    new FriendStudent(student[1].Id, student[0].Id)
-                };
+            {
+                new FriendStudent(ids[0], ids[1]), 
+                new FriendStudent(ids[1], ids[0])
+            };
             
             if (FriendStudentDAO.Post(friendStudents))
             {
@@ -76,12 +128,18 @@ namespace pomdyBackend.Controllers
         }
         
         [HttpDelete("friends")]
-        public ActionResult<Student> Delete([FromBody] Student[] student)
+        public ActionResult<Student> Delete([FromBody] Student[] students)
         {
+            int[] ids =
+            {
+                Security.RetrieveIdFromToken(students[0].Token),
+                Security.RetrieveIdFromToken(students[1].Token)
+            };
+            
             FriendStudent[] friendStudents =
             {
-                new FriendStudent(student[0].Id, student[1].Id), 
-                new FriendStudent(student[1].Id, student[0].Id)
+                new FriendStudent(ids[0], ids[1]), 
+                new FriendStudent(ids[1], ids[0])
             };
             
             if (FriendStudentDAO.Delete(friendStudents))
@@ -90,32 +148,36 @@ namespace pomdyBackend.Controllers
             }
             return BadRequest();
         }
-        
+
         /***** API SessionStudent *****/
-        [HttpGet("{id}/sessions")]
-        public ActionResult<IEnumerable<Session>> GetStudentSessions(int id)
+        [HttpGet("{token}/sessions")]
+        public ActionResult<IEnumerable<Session>> GetStudentSessions(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             return Ok(SessionDAO.GetStudentSessions(id));
         }
         
         /***** API ExtrabreakStudent *****/
-        [HttpGet("{id}/extrabreaks")]
-        public ActionResult<IEnumerable<Extrabreak>> GetStudentExtrabreaks(int id)
+        [HttpGet("{token}/extrabreaks")]
+        public ActionResult<IEnumerable<Extrabreak>> GetStudentExtrabreaks(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             return Ok(ExtrabreakDAO.GetStudentExtrabreaks(id));
         }
         
         /***** API RoomStudent *****/
-        [HttpGet("{id}/rooms")]
-        public ActionResult<IEnumerable<Room>> GetStudentRooms(int id)
+        [HttpGet("{token}/rooms")]
+        public ActionResult<IEnumerable<Room>> GetStudentRooms(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             return Ok(RoomStudentDAO.GetStudentRooms(id));
         }
         
         /***** API TeamStudent *****/
-        [HttpGet("{id}/teams")]
-        public ActionResult<IEnumerable<Team>> GetStudentTeams(int id)
+        [HttpGet("{token}/teams")]
+        public ActionResult<IEnumerable<Team>> GetStudentTeams(string token)
         {
+            int id = Security.RetrieveIdFromToken(token);
             return Ok(TeamStudentDAO.GetStudentTeams(id));
         }
     }

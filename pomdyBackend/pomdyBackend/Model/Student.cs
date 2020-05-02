@@ -23,7 +23,7 @@ namespace pomdyBackend.Model
 
         public Student(){}
 
-        public Student(int id, bool isArchived, bool isGhostMode, string nickName, string password, string mail, string token, string firstName, string lastName, string description, DateTime birthDate, string diplomaName, string school, string photo)
+        public Student(int id, bool isArchived, bool isGhostMode, string nickName, string password, string mail, string firstName, string lastName, string description, DateTime birthDate, string diplomaName, string school, string photo)
         {
             Id = id;
             IsArchived = isArchived;
@@ -31,7 +31,6 @@ namespace pomdyBackend.Model
             NickName = nickName;
             Password = password;
             Mail = mail;
-            Token = token;
             FirstName = firstName;
             LastName = lastName;
             Description = description;
@@ -49,7 +48,6 @@ namespace pomdyBackend.Model
             NickName = sqlDataReader[StudentDAO.FIELD_NICKNAME].ToString();
             Password = sqlDataReader[StudentDAO.FIELD_PASSWORD].ToString();
             Mail = sqlDataReader[StudentDAO.FIELD_MAIL].ToString();
-            Token = sqlDataReader[StudentDAO.FIELD_TOKEN].ToString();
             FirstName = sqlDataReader[StudentDAO.FIELD_FIRSTNAME].ToString();
             LastName = sqlDataReader[StudentDAO.FIELD_LASTNAME].ToString();
             Description = sqlDataReader[StudentDAO.FIELD_DESCRIPTION].ToString();

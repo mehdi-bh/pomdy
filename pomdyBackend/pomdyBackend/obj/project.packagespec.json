@@ -30,9 +30,17 @@
   "frameworks": {
     "netcoreapp3.1": {
       "dependencies": {
+        "Microsoft.IdentityModel.JsonWebTokens": {
+          "target": "Package",
+          "version": "[6.5.1, )"
+        },
         "System.Data.SqlClient": {
           "target": "Package",
           "version": "[4.8.1, )"
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[6.5.1, )"
         },
         "Two.AspNetCore.SpaServices.StaticFiles": {
           "target": "Package",
