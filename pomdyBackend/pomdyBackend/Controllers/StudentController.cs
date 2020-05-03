@@ -30,7 +30,7 @@ namespace pomdyBackend.Controllers
             int id = Security.RetrieveIdFromToken(token);
             Student student = StudentDAO.Get(id);
 
-            return student != null ? (ActionResult<Student>) Ok(student) : NotFound("This student doesn't exist!");
+            return student;
         }
         
         [HttpGet("nickname/{nickName}")]
