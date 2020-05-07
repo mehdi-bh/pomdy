@@ -10,6 +10,7 @@
           <e p="assets" t="Include">
             <e p="images" t="Include">
               <e p="image.png" t="Include" />
+              <e p="user.png" t="Include" />
             </e>
           </e>
           <e p="favicon.ico" t="Include" />

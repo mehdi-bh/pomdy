@@ -23,6 +23,32 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.html ***!
+  \*******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<app-dashboard></app-dashboard>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard/dashboard.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard/dashboard.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\"> <!--*ngIf=\"student != undefined\"-->\n  <div class=\"row justify-content-center p-3\">\n    <div class=\"col-12 col-sm-8 col-lg-4 text-center\">\n      <div class=\"h1\">\n        Welcome back\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n\n    <div class=\"col-12 col-sm-8 col-md-6 col-lg-4 text-center\">\n\n      <div>\n        <button class=\"btn action-button shadow animate blue w-100 mt-2 mb-2\">\n          Start a new session\n        </button>\n      </div>\n\n      <div>\n        <button class=\"btn action-button shadow animate blue w-100 mt-2\">\n          Create a room\n        </button>\n      </div>\n\n    </div>\n\n  </div>\n\n  <hr class=\"mt-4 mb-4\" style=\"background-color: slategrey\">\n\n  <div class=\"row\">\n\n    <div class=\"col-12 col-lg-6\">\n\n      <div class=\"p-2\">\n        <label>Last sessions</label>\n        <button class=\"btn action-button-small shadow animate blue\" style=\"float: right;font-size: 10px\">See more</button>\n      </div>\n\n      <div>\n        <table class=\"table table-dark table-striped\">\n          <thead>\n          <tr>\n            <th scope=\"col\">#</th>\n            <th scope=\"col\">First</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr>\n            <th scope=\"row\">1</th>\n            <td>Mark</td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n    <div class=\"col-6 col-lg-3\">\n\n      <div class=\"p-2\">\n        <label >Teams</label>\n        <button class=\"btn action-button-small shadow animate blue\" style=\"float: right;font-size: 10px\">Create team</button>\n      </div>\n\n      <div>\n        <table class=\"table table-dark table-striped\">\n          <thead>\n          <tr>\n            <th scope=\"col\">#</th>\n            <th scope=\"col\">First</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr>\n            <th scope=\"row\">1</th>\n            <td>Mark</td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n    <div class=\"col-6 col-lg-3\">\n\n      <div class=\"p-2\">\n        <label>Friends</label>\n        <button class=\"btn action-button-small shadow animate blue\" style=\"float: right;font-size: 10px\">Add</button>\n      </div>\n\n      <div>\n        <table class=\"table table-dark table-striped\">\n          <thead>\n          <tr>\n            <th scope=\"col\">#</th>\n            <th scope=\"col\">First</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr>\n            <th scope=\"row\">1</th>\n            <td>Mark</td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n  </div>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Errors/PageNotFound/page-not-found/page-not-found.component.html":
 /*!***************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Errors/PageNotFound/page-not-found/page-not-found.component.html ***!
@@ -71,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-profile [student]=\"student\"></app-profile>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-profile [student]=\"student\"\n             (studentModified)=\"modifyStudent($event)\"\n             (eventVerifyNickName)=\"verifyNickName($event)\"\n             [isNickNameTaken]=\"isNickNameTaken\"\n             (eventVerifyMail)=\"verifyMail($event)\"\n             [isMailTaken]=\"isMailTaken\"\n></app-profile>\n");
 
 /***/ }),
 
@@ -84,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\" *ngIf=\"student != undefined\">\n\n  <div class=\"row justify-content-center p-3\">\n    <div class=\"h3\">\n      My profile\n    </div>\n  </div>\n\n  <div class=\"row pb-2\">\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate blue w-100\" [routerLink]=\"['/home']\">\n        Go to dashboard\n        <fa-icon [icon]=\"faArrowRight\"></fa-icon>\n      </button>\n    </div>\n\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate green w-100\">\n        Save changes\n        <fa-icon [icon]=\"faSave\"></fa-icon>\n      </button>\n    </div>\n\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate red w-100\">\n        Log out\n        <fa-icon [icon]=\"faSignOutAlt\"></fa-icon>\n      </button>\n    </div>\n\n  </div>\n\n  <hr style=\"background-color: slategrey\">\n\n  <div class=\"row\">\n\n\n    <!-------------- 1st column -------------->\n    <div class=\"col-12 col-md-12 col-xl-2 bg-dark shadow\">\n\n      <div class=\"card bg-dark mx-auto mb-3\">\n        <div class=\"card-img-bottom\">\n          <img src=\"assets/images/image.png\" class=\"img-fluid float-right w-100 h-100\">\n        </div>\n      </div>\n\n      <!-- Nickname and ghost mode -->\n      <div class=\"p-2 pt-3\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Nickname</label>\n        </div>\n\n        <div>\n\n          <div>\n            <input type=\"text\" class=\"form-control w-100\" value=\"{{student.nickName}}\">\n          </div>\n\n          <div class=\"form-check w-100 p-3 text-center\">\n\n            <input type=\"checkbox\" class=\"form-check-input\" [checked]=\"student.isGhostMode\">\n            <label class=\"form-check-label\">Ghost mode</label>\n\n          </div>\n\n        </div>\n\n      </div>\n\n      <div class=\"p-2\">\n        <button class=\"btn action-button-small shadow animate red w-100\">\n          Disable account\n          <fa-icon [icon]=\"faSignOutAlt\"></fa-icon>\n        </button>\n      </div>\n\n    </div>\n\n\n    <!-------------- 2nd column -------------->\n    <div class=\"col-12 col-md-6 col-xl-5 bg-dark shadow\">\n      <!-- Firstname and lastname -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-50\">Firstname</label>\n          <label class=\"w-50\">Lastname</label>\n        </div>\n\n        <div class=\"form-inline\">\n          <input type=\"text\" class=\"form-control w-50\" value=\"{{student.firstName}}\">\n          <input type=\"text\" class=\"form-control w-50\" value=\"{{student.lastName}}\">\n        </div>\n\n      </div>\n\n      <!-- Birthdate -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Birthdate</label>\n        </div>\n\n        <!-- TODO Changer le datetime en date -->\n        <div>\n          <input type=\"datetime-local\" class=\"form-control w-100\" min=\"1920-01-01\" max=\"2020-01-01\" value=\"{{student.birthDate}}\"/>\n        </div>\n\n      </div>\n\n      <!-- School -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">School</label>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control\" value=\"{{student.school}}\"/>\n        </div>\n\n      </div>\n\n      <!-- Diploma name -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Diploma name</label>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control\" value=\"{{student.diplomaName}}\"/>\n        </div>\n\n      </div>\n    </div>\n\n\n    <!-------------- 3rd column -------------->\n    <div class=\"col-12 col-md-6 col-xl-5 bg-dark shadow\">\n      <!-- Mail -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Mail</label>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control w-100\" value=\"{{student.mail}}\"/>\n        </div>\n\n      </div>\n\n      <!-- Password -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Password</label>\n        </div>\n\n        <div>\n          <button class=\"btn action-button shadow animate darkBlue w-100 p-1 mb-5\" (click)=\"togglePasswordChange()\">Change</button>\n        </div>\n\n      </div>\n\n      <!-- Change Password -->\n      <div class=\"p-4\" *ngIf=\"!disabledPasswordChange\">\n\n        <div class=\"text-center\">\n          <label class=\"w-50\">New password</label>\n          <label class=\"w-50\">Confirm password</label>\n        </div>\n\n        <div class=\"form-inline\">\n          <input type=\"text\" class=\"form-control w-50\"/>\n          <input type=\"text\" class=\"form-control w-50\"/>\n        </div>\n\n      </div>\n\n      <div class=\"p-4 mt-4\" *ngIf=\"!passwordsMatch\">\n        <div class=\"h5 bg-danger p-1 mt-2 rounded text-center\">\n          Passwords don't match\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\" *ngIf=\"student != undefined\">\n  <div class=\"row justify-content-center p-3\">\n    <div class=\"h3\">\n      My profile\n    </div>\n  </div>\n\n  <div class=\"row pb-2\">\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate blue w-100\" [routerLink]=\"['/dashboard']\">\n        Go to dashboard\n        <fa-icon [icon]=\"faArrowRight\"></fa-icon>\n      </button>\n    </div>\n\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate green w-100\" [disabled]=\"disabledSaveChanges()\" (click)=\"notifyModify()\">\n        Save changes\n        <fa-icon [icon]=\"faSave\"></fa-icon>\n      </button>\n    </div>\n\n    <div class=\"col-12 col-md-4 p-2\">\n      <button class=\"btn action-button-small shadow animate red w-100\" (click)=\"signOut()\">\n        Log out\n        <fa-icon [icon]=\"faSignOutAlt\"></fa-icon>\n      </button>\n    </div>\n\n  </div>\n\n  <hr style=\"background-color: slategrey\">\n\n  <div class=\"row\">\n\n\n    <!-------------- 1st column -------------->\n    <div class=\"col-12 col-md-12 col-xl-2 bg-dark shadow\">\n\n      <!-- TODO : Pouvoir importer des photos -->\n      <div class=\"card bg-dark mx-auto mb-5\">\n        <div class=\"card-img-bottom\">\n          <img src=\"assets/images/user.png\" class=\"img-fluid float-right w-100 h-100\">\n        </div>\n      </div>\n\n      <!-- Nickname and ghost mode -->\n      <div class=\"p-2 pt-3\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Nickname</label>\n        </div>\n\n        <div>\n\n          <div>\n            <input type=\"text\" class=\"form-control w-100\" [(ngModel)]=\"student.nickName\" (keyup)=\"notifyVerifyNickName();enableChanges()\">\n          </div>\n\n          <div class=\"text-center\" *ngIf=\"isNickNameTaken\">\n            <span class=\"badge badge-danger\">Nickname already taken</span>\n          </div>\n\n\n          <div class=\"form-check w-100 p-3 text-center\">\n\n            <input type=\"checkbox\" class=\"form-check-input\" [(ngModel)]=\"student.isGhostMode\" (change)=\"enableChanges()\">\n            <label class=\"form-check-label\">Ghost mode</label>\n\n          </div>\n\n        </div>\n\n      </div>\n\n      <div class=\"p-2\" *ngIf=\"!student.isArchived; else isArchived\">\n        <button class=\"btn action-button-small shadow animate red w-100\" (click)=\"notifyDisableAccount()\">\n          Disable account\n          <fa-icon [icon]=\"faPowerOff\"></fa-icon>\n        </button>\n      </div>\n\n      <ng-template #isArchived>\n        <div class=\"p-2\">\n          <button class=\"btn action-button-small shadow animate yellow w-100\" (click)=\"notifyEnableAccount()\">\n            Enable account\n            <fa-icon [icon]=\"faPowerOff\"></fa-icon>\n          </button>\n        </div>\n      </ng-template>\n\n    </div>\n\n\n    <!-------------- 2nd column -------------->\n    <div class=\"col-12 col-md-6 col-xl-5 bg-dark shadow\">\n      <!-- Firstname and lastname -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-50\">Firstname</label>\n          <label class=\"w-50\">Lastname</label>\n        </div>\n\n        <div class=\"form-inline\">\n          <input type=\"text\" class=\"form-control w-50\" [(ngModel)]=\"student.firstName\" (keyup)=\"enableChanges()\">\n          <input type=\"text\" class=\"form-control w-50\" [(ngModel)]=\"student.lastName\" (keyup)=\"enableChanges()\">\n        </div>\n\n      </div>\n\n      <!-- Birthdate -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Birthdate</label>\n        </div>\n\n        <!-- TODO Changer le datetime en date -->\n        <div>\n          <input type=\"datetime-local\" class=\"form-control w-100\" min=\"1920-01-01\" max=\"2020-01-01\" [(ngModel)]=\"student.birthDate\" (change)=\"enableChanges()\"/>\n        </div>\n\n      </div>\n\n      <!-- School -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">School</label>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"student.school\" (keyup)=\"enableChanges()\"/>\n        </div>\n\n      </div>\n\n      <!-- Diploma name -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Diploma name</label>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"student.diplomaName\" (keyup)=\"enableChanges()\"/>\n        </div>\n\n      </div>\n    </div>\n\n\n    <!-------------- 3rd column -------------->\n    <div class=\"col-12 col-md-6 col-xl-5 bg-dark shadow\">\n      <!-- Mail -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Mail</label>\n        </div>\n\n        <div class=\"text-center\" *ngIf=\"isMailTaken\">\n          <span class=\"badge badge-danger\">Mail already taken</span>\n        </div>\n\n        <div>\n          <input type=\"text\" class=\"form-control w-100\" [(ngModel)]=\"student.mail\" (keyup)=\"notifyVerifyMail();enableChanges()\"/>\n        </div>\n\n      </div>\n\n      <!-- Password -->\n      <div class=\"p-4\">\n\n        <div class=\"text-center\">\n          <label class=\"w-100\">Password</label>\n        </div>\n\n        <div>\n          <button class=\"btn action-button shadow animate darkBlue w-100 p-1 mb-5\" (click)=\"togglePasswordChange()\">Change</button>\n        </div>\n\n      </div>\n\n      <!-- Change Password -->\n      <div class=\"p-4\" *ngIf=\"!disabledPasswordChange\">\n\n        <div class=\"text-center\">\n          <label class=\"w-50\">New password</label>\n          <label class=\"w-50\">Confirm password</label>\n        </div>\n\n        <div class=\"form-inline\">\n          <input type=\"text\" class=\"form-control w-50\" [(ngModel)]=\"newPassword\" (keyup)=\"enableChanges();updatePasswordMatch()\"/>\n          <input type=\"text\" class=\"form-control w-50\" [(ngModel)]=\"confirmPassword\" (keyup)=\"enableChanges();updatePasswordMatch()\"/>\n        </div>\n\n        <div class=\"text-center\">\n          <span class=\"badge badge-warning\">At least 8 characters with uppercase, lowercase and number</span>\n        </div>\n\n      </div>\n\n      <div class=\"p-4 mt-2\" *ngIf=\"!passwordsMatch && !disabledPasswordChange\">\n        <div class=\"h5 bg-danger p-1 mt-1 rounded text-center\">\n          Passwords don't match\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -377,7 +403,8 @@ class Student {
             birthDate: this._birthDate,
             diplomaName: this._diplomaName,
             school: this._school,
-            photo: this._photo
+            photo: this._photo,
+            token: this._token
         };
     }
     fromStudentDTO(studentDTO) {
@@ -499,6 +526,9 @@ let StudentService = class StudentService {
     }
     post(student) {
         return this.httpClient.post(this.API_URL, student);
+    }
+    put(student) {
+        return this.httpClient.put(this.API_URL, student);
     }
     getByToken(token) {
         return this.httpClient.get(`${this.API_URL}/${token}`);
@@ -625,6 +655,94 @@ ConnectedGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.css":
+/*!****************************************************************************!*\
+  !*** ./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.css ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkYXNoYm9hcmQtc21hcnQvZGFzaGJvYXJkLXNtYXJ0LmNvbXBvbmVudC5jc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: DashboardSmartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardSmartComponent", function() { return DashboardSmartComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DashboardSmartComponent = class DashboardSmartComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+DashboardSmartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-dashboard-smart',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./dashboard-smart.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./dashboard-smart.component.css */ "./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.css")).default]
+    })
+], DashboardSmartComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/UI/Dashboard/dashboard/dashboard.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/UI/Dashboard/dashboard/dashboard.component.css ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/UI/Dashboard/dashboard/dashboard.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/UI/Dashboard/dashboard/dashboard.component.ts ***!
+  \***************************************************************/
+/*! exports provided: DashboardComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DashboardComponent = class DashboardComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-dashboard',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/UI/Dashboard/dashboard/dashboard.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./dashboard.component.css */ "./src/app/UI/Dashboard/dashboard/dashboard.component.css")).default]
+    })
+], DashboardComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/UI/Errors/PageNotFound/page-not-found/page-not-found.component.css":
 /*!************************************************************************************!*\
   !*** ./src/app/UI/Errors/PageNotFound/page-not-found/page-not-found.component.css ***!
@@ -634,7 +752,7 @@ ConnectedGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9VSS9FcnJvcnMvUGFnZU5vdEZvdW5kL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9FcnJvcnMvUGFnZU5vdEZvdW5kL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -678,7 +796,7 @@ PageNotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9VSS9Ib21lL2hvbWUtc21hcnQvaG9tZS1zbWFydC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9Ib21lL2hvbWUtc21hcnQvaG9tZS1zbWFydC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -787,7 +905,7 @@ HomeSmartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9VSS9Ib21lL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9Ib21lL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -982,7 +1100,7 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9VSS9Qcm9maWxlL3Byb2ZpbGUtc21hcnQvcHJvZmlsZS1zbWFydC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9Qcm9maWxlL3Byb2ZpbGUtc21hcnQvcHJvZmlsZS1zbWFydC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -1010,6 +1128,8 @@ let ProfileSmartComponent = class ProfileSmartComponent {
     constructor(studentService) {
         this.studentService = studentService;
         this.subscriptions = [];
+        this.isNickNameTaken = false;
+        this.isMailTaken = false;
     }
     ngOnInit() {
         this.loadStudent();
@@ -1028,6 +1148,24 @@ let ProfileSmartComponent = class ProfileSmartComponent {
             this.student = new _Model_Classes_Student__WEBPACK_IMPORTED_MODULE_4__["Student"]().fromStudentDTO(student);
         });
         this.subscriptions.push(sub);
+    }
+    modifyStudent($event) {
+        const sub = this.studentService.put($event.toStudentDTO()).subscribe();
+        this.subscriptions.push(sub);
+    }
+    verifyNickName($event) {
+        this.subscriptions.push(this.studentService.getByNickName($event.nickName).subscribe(answer => {
+            this.isNickNameTaken = answer != null ?
+                $event.id != answer.id
+                : false;
+        }));
+    }
+    verifyMail($event) {
+        this.subscriptions.push(this.studentService.getByMail($event.mail).subscribe(answer => {
+            this.isMailTaken = answer != null ?
+                $event.id != answer.id
+                : false;
+        }));
     }
 };
 ProfileSmartComponent.ctorParameters = () => [
@@ -1054,7 +1192,7 @@ ProfileSmartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi8uLi9VSS9Qcm9maWxlL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9Qcm9maWxlL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -1071,18 +1209,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _Services_Utility_LocalStorageManager__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Services/Utility/LocalStorageManager */ "./src/app/Services/Utility/LocalStorageManager.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
 
 
 
 
 
 let ProfileComponent = class ProfileComponent {
-    constructor() {
+    constructor(fb, router) {
+        this.fb = fb;
+        this.router = router;
         this.faArrowRight = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faArrowRight"];
         this.faSave = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faSave"];
         this.faSignOutAlt = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faSignOutAlt"];
+        this.faPowerOff = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPowerOff"];
         this.disabledPasswordChange = true;
         this.passwordsMatch = true;
+        this.saveChangesDisabled = true;
+        this.eventVerifyNickName = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.eventVerifyMail = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.studentModified = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     ngOnInit() { }
     get student() {
@@ -1091,10 +1243,85 @@ let ProfileComponent = class ProfileComponent {
     set student(value) {
         this._student = value;
     }
+    /***** Methods *****/
+    enableChanges() {
+        this.saveChangesDisabled = false;
+    }
+    updatePasswordMatch() {
+        this.passwordsMatch = this.newPassword == this.confirmPassword;
+    }
+    signOut() {
+        _Services_Utility_LocalStorageManager__WEBPACK_IMPORTED_MODULE_4__["LocalStorageManager"].resetToken();
+        this.router.navigate(['home']);
+    }
     togglePasswordChange() {
         this.disabledPasswordChange = !this.disabledPasswordChange;
+        this.newPassword = "";
+        this.confirmPassword = "";
+        this.passwordsMatch = true;
+    }
+    notifyModify() {
+        if (!this.disabledPasswordChange) {
+            this.student.password = this.newPassword;
+        }
+        this.studentModified.next(this.student);
+        this.saveChangesDisabled = true;
+        this.disabledPasswordChange = true;
+    }
+    notifyDisableAccount() {
+        this.student.isArchived = true;
+        this.studentModified.next(this.student);
+        this.saveChangesDisabled = true;
+        this.disabledPasswordChange = true;
+    }
+    notifyEnableAccount() {
+        this.student.isArchived = false;
+        this.studentModified.next(this.student);
+        this.saveChangesDisabled = true;
+        this.disabledPasswordChange = true;
+    }
+    notifyVerifyNickName() {
+        let isNotEmpty = this.student.nickName != "";
+        if (isNotEmpty) {
+            this.eventVerifyNickName.next(this.student);
+        }
+    }
+    notifyVerifyMail() {
+        let isNotEmpty = this.student.mail != "";
+        if (isNotEmpty) {
+            this.eventVerifyMail.next(this.student);
+        }
+    }
+    disabledSaveChanges() {
+        // TODO Check on REGEX + Check password
+        let nickNameFailed = this.student.nickName.length < 3
+            || this.student.nickName.length > 20
+            || this.isNickNameTaken;
+        let mailFailed = this.student.mail.length < 4
+            || this.student.mail.length > 50
+            || this.isMailTaken;
+        return nickNameFailed || mailFailed || !this.passwordsMatch || this.saveChangesDisabled;
     }
 };
+ProfileComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ProfileComponent.prototype, "isNickNameTaken", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ProfileComponent.prototype, "isMailTaken", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], ProfileComponent.prototype, "eventVerifyNickName", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], ProfileComponent.prototype, "eventVerifyMail", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], ProfileComponent.prototype, "studentModified", void 0);
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
 ], ProfileComponent.prototype, "student", null);
@@ -1206,6 +1433,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_Profile_profile_profile_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./UI/Profile/profile/profile.component */ "./src/app/UI/Profile/profile/profile.component.ts");
 /* harmony import */ var _UI_Profile_profile_smart_profile_smart_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./UI/Profile/profile-smart/profile-smart.component */ "./src/app/UI/Profile/profile-smart/profile-smart.component.ts");
 /* harmony import */ var _Services_Utility_connected_guard_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Services/Utility/connected-guard.service */ "./src/app/Services/Utility/connected-guard.service.ts");
+/* harmony import */ var _UI_Dashboard_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./UI/Dashboard/dashboard/dashboard.component */ "./src/app/UI/Dashboard/dashboard/dashboard.component.ts");
+/* harmony import */ var _UI_Dashboard_dashboard_smart_dashboard_smart_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./UI/Dashboard/dashboard-smart/dashboard-smart.component */ "./src/app/UI/Dashboard/dashboard-smart/dashboard-smart.component.ts");
+
+
 
 
 
@@ -1230,6 +1461,11 @@ const routes = [
         path: 'profile',
         canActivate: [_Services_Utility_connected_guard_service__WEBPACK_IMPORTED_MODULE_14__["ConnectedGuardService"]],
         component: _UI_Profile_profile_smart_profile_smart_component__WEBPACK_IMPORTED_MODULE_13__["ProfileSmartComponent"]
+    },
+    {
+        path: 'dashboard',
+        canActivate: [_Services_Utility_connected_guard_service__WEBPACK_IMPORTED_MODULE_14__["ConnectedGuardService"]],
+        component: _UI_Dashboard_dashboard_smart_dashboard_smart_component__WEBPACK_IMPORTED_MODULE_16__["DashboardSmartComponent"]
     },
     // Other routes
     {
@@ -1256,7 +1492,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _UI_Home_home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
             _UI_Home_home_smart_home_smart_component__WEBPACK_IMPORTED_MODULE_9__["HomeSmartComponent"],
             _UI_Profile_profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"],
-            _UI_Profile_profile_smart_profile_smart_component__WEBPACK_IMPORTED_MODULE_13__["ProfileSmartComponent"]
+            _UI_Profile_profile_smart_profile_smart_component__WEBPACK_IMPORTED_MODULE_13__["ProfileSmartComponent"],
+            _UI_Dashboard_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_15__["DashboardComponent"],
+            _UI_Dashboard_dashboard_smart_dashboard_smart_component__WEBPACK_IMPORTED_MODULE_16__["DashboardSmartComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1264,7 +1502,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot(routes),
             _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"]
+            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"]
         ],
         providers: [_Services_Utility_connected_guard_service__WEBPACK_IMPORTED_MODULE_14__["ConnectedGuardService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
